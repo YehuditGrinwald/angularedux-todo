@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../store';
-import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from '../actions';
-import { ITodo } from '../todo';
+import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from './actions';
+import { ITodo } from './Itodo';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -10,6 +10,8 @@ import { ITodo } from '../todo';
 })
 export class TodoListComponent implements OnInit {
   @select() todos;
+  @select() users;
+
   model: ITodo = {
     id: 0,
     description: '',
@@ -17,7 +19,7 @@ export class TodoListComponent implements OnInit {
     priority: 'low',
     isCompleted: false
   };
-  constructor(private ngRedux: NgRedux<IAppState>) { }
+  constructor(private ngRedux: NgRedux<IAppState>) { console.log(this.users, 'sss','dd',this.todos); }
   ngOnInit() {
   }
   onSubmit() {

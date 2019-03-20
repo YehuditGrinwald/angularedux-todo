@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Users</h3>
+      <h6>Create USer:</h6>
+      <form (ngSubmit)="onSubmit()" #todoForm="ngForm">
+        <div class="form-row">
+          <div class="col-auto">
+            <input type="text" class="form-control" placeholder="Name" id="name" [(ngModel)]="model.name" name="name"
+              #name="ngModel">
+          </div>
+          <div class="col-auto">
+            <input type="text" class="form-control" placeholder="last name" id="lastName" [(ngModel)]="model.lastName"
+              name="lastName" #lastName="ngModel">
+          </div>
+          <div class="col-auto">
+            <select class="form-control" id="team" [(ngModel)]="model.priority" name="priority" #priority="ngModel">
+              <option value="Ofek">Ofek</option>
+              <option value="Egoz">Egoz</option>
+              <option value="Oketz">Oketz</option>
+            </select>
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+        </div>
+      </form>
+      <br />
+      <h6>Users list</h6>
+      <div *ngIf="(users | async)?.length!=0">
+        <table class="table">
+          <thead class="thead-inverse">
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Last Name</th>
+              <th>Team</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- it’s important to use the async pipe again to retrieve data from the store for usage in the template. -->
+            <tr *ngFor="let u of users | async">
+              <td><span>{{ u.id }}</span></td>
+              <td><span>{{ u.name }}</span></td>
+              <td><span>{{ u.lastName }}</span></td>
+              <td><span>{{ u.team }}</span></td>
+              <td>
+                <span *ngIf="u.team == 'Ofek'">Ofek</span>
+                <span *ngIf="u.team == 'Egoz'">Egoz</span>
+                <span *ngIf="u.team == 'Oketz'">Oketz</span>
+              </td>
+              <td><button class="btn btn-primary" (click)="removeUser(u)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

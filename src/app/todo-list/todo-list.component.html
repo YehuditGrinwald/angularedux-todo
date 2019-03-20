@@ -20,6 +20,9 @@
         [(ngModel)]="model.responsible"
         name="responsible"
         #responsible="ngModel">
+        <!-- <option [ngValue]="responsible" *ngFor="let responsible of users">{{responsible.name}}{{responsible.lastName}}</option> -->
+        <!-- <option *ngFor="let u of users"
+         value="{{u.value}}" [selected]="u.value == u.name">{{u.name}}{{u.lastName}}</option> -->
     </div>
     <div class="col-auto">
       <select 

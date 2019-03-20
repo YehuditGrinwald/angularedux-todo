@@ -1,2 +1,4 @@
-<p class="text-right"><span class="badge badge-secondary">Last Update: {{ (lastUpdate | async) | date:'mediumTime' }} | Total items: {{ (todos | async).length }}</span></p>
+<p class="text-right">
+  <a routerLink="/users" routerLinkActive="active">Users</a>
+</p>
 <button class="btn btn-primary" (click)="clearTodos()">Delete All</button>
