@@ -19,7 +19,7 @@ export class TodoListComponent implements OnInit {
     priority: 'low',
     isCompleted: false
   };
-  constructor(private ngRedux: NgRedux<IAppState>) { console.log(this.users, 'sss','dd',this.todos); }
+  constructor(private ngRedux: NgRedux<IAppState>) { }
   ngOnInit() {
   }
   onSubmit() {
